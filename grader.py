@@ -191,7 +191,7 @@ def testar_ativ6_e_7(funcao_aluno, tipo):
     nums = re.findall(r'\b\d+\b', saida)
     if (tipo == 6 and '40' in nums):
         print("✅ Perfeito! São 40 anos para a árvore B atingir a A.")
-    elif (tipo == 7 and ('11' in nums or '12' in nums)):
+    elif (tipo == 7 and '35' in nums):
         print("✅ Cálculos de taxa de natalidade corretos.")
     else:
         print("❌ O tempo calculado não está de acordo com o gabarito.")
