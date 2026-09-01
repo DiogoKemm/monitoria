@@ -249,3 +249,42 @@ def testar_ativ13(funcao_aluno):
         print("✅ Sensacional! Os comandos de repetição aninhados geraram a tabuada perfeitamente.")
     else:
         print("❌ Incorreto ou incompleto. Verifique se os seus dois loops (interno e externo) estão indo de 1 até 9.")
+
+def testar_ativ10(funcao_aluno):
+    # Atividade 10: 3 cursos, 3 jogadores cada. Massa e Idade.[cite: 1]
+    # Vamos fornecer 18 inputs simulados na seguinte ordem (Massa, Idade):
+    # Curso 1: Todos com 60kg e 20 anos
+    # Curso 2: Todos com 80kg e 22 anos
+    # Curso 3: Todos com 100kg e 24 anos
+    # Média Geral Esperada: 80kg e 22 anos.
+    inputs_simulados = [
+        60, 20, 60, 20, 60, 20,  # Jogadores do Curso 1
+        80, 22, 80, 22, 80, 22,  # Jogadores do Curso 2
+        100, 24, 100, 24, 100, 24 # Jogadores do Curso 3
+    ]
+    
+    saida, erro = rodar_com_mock(funcao_aluno, inputs_simulados)
+    
+    # Tratamento caso o aluno tenha pedido "nomes" e nosso robô digitou números, quebrando o código
+    if erro: 
+        print(f"❌ Ocorreu um erro no seu código: {erro}")
+        print("💡 Dica: Peça no input() APENAS a massa e a idade (exatamente nessa ordem).")
+        print("Se você pediu o NOME do curso ou do jogador, o validador pode ter se confundido.")
+        return
+    
+    # Extrai todos os números impressos
+    nums = re.findall(r'\b\d+(?:\.\d+)?\b', saida.replace(',', '.'))
+    
+    # Verifica se as médias por curso (60, 80, 100 e 20, 22, 24) aparecem
+    # e se a média geral (80 e 22) foi calculada e impressa corretamente.
+    tem_medias_cursos = '60' in nums and '100' in nums and '24' in nums
+    tem_media_geral = '80' in nums and '22' in nums
+    
+    if tem_medias_cursos and tem_media_geral:
+        print("✅ Espetacular! As médias de cada curso e as médias gerais estão corretas.")
+    elif tem_medias_cursos and not tem_media_geral:
+        print("❌ Quase lá! Você acertou as médias de cada curso, mas errou (ou esqueceu) a média de TODOS os participantes.")
+    else:
+        print("❌ Incorreto. O resultado impresso não é o esperado.")
+        print("   Testamos o seu código com jogadores de 60kg(20 anos), 80kg(22 anos) e 100kg(24 anos).")
+        print("   Revise o local onde você está 'zerando' as variáveis de soma.")
