@@ -198,7 +198,7 @@ def testar_ativ6_e_7(funcao_aluno, tipo):
 
 def testar_ativ8(funcao_aluno):
     saida, erro = rodar_com_mock(funcao_aluno, [5, 5, 5, 8, 8])
-    if ('6.6' in saida or '6,6' in saida) and ('Aprovado' in saida or 'aprovado' in saida):
+    if ('6.8' in saida or '6,8' in saida) and ('Aprovado' in saida or 'aprovado' in saida):
         print("✅ Média ponderada calculada e situação do aluno corretas.")
     else:
         print("❌ Erro na ponderação. A divisão final deve ser por 30 (soma dos pesos).")
